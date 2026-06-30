@@ -30,7 +30,7 @@ public class JogoController{
 
         Usuario logado = (Usuario) session.getAttribute("usuario");
         if (logado == null){
-            return "redirect:/index.jsp";
+            return "redirect:/login";
         }
 
         if ("editar".equals(acao) && id != null){
@@ -68,7 +68,7 @@ public class JogoController{
 
         Usuario logado = (Usuario) session.getAttribute("usuario");
         if (logado == null){
-            return "redirect:/index.jsp";
+            return "redirect:/login";
         }
 
         Boolean isJogando = jogando != null && (jogando.equals("true") || jogando.equals("on"));
@@ -80,7 +80,7 @@ public class JogoController{
                 service.atualizar(j);
                 redirectAttrs.addAttribute("msg", "editado");
             } else {
-                service.atualizar(j);
+                service.inserir(j);
                 redirectAttrs.addAttribute("msg", "salvo");
             }
             return "redirect:/jogo";

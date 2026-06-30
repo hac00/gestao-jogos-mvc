@@ -29,7 +29,7 @@ public class WishlistController {
 
         Usuario logado = (Usuario) session.getAttribute("usuario");
         if (logado == null){
-            return "redirect:/index.jsp";
+            return "redirect:/login";
         }
 
         if ("editar".equals(acao) && id != null){
@@ -60,7 +60,7 @@ public class WishlistController {
 
         Usuario logado = (Usuario) session.getAttribute("usuario");
         if (logado == null){
-            return "redirect:/index.jsp";
+            return "redirect:/login";
         }
 
         Wishlist w = new Wishlist(logado.getId(), nome, plataforma, precoMaximo);

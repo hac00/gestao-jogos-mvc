@@ -11,22 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/login")
 public class LoginController {
 
     private LoginService service = new LoginService();
 
     @GetMapping("/")
     public String index(){
-        return "redirect:/login";
+        return "index";
     }
 
-    @GetMapping
+    @GetMapping("/login")
     public String exibirLogin(){
         return "index";
     }
 
-    @PostMapping
+    @PostMapping("/login")
     public String autenticar(@RequestParam String email,
                              @RequestParam String senha,
                              HttpSession session,
@@ -36,7 +35,7 @@ public class LoginController {
 
         if (usuario != null){
             session.setAttribute("usuario", usuario);
-            return "redirect:/produto";
+            return "redirect:/jogo";
         } else {
             model.addAttribute("erro", "Usuario ou senha invalidos");
             return "index";
