@@ -16,19 +16,4 @@ public class CadastroController {
         return "cadastro";
     }
 
-    @PostMapping("/usuario")
-    public String cadastrarUsuario(@RequestParam String nome,
-                                   @RequestParam String email,
-                                   @RequestParam String senha,
-                                   Model model){
-
-        try {
-            return "redirect:/login?msg=cadastrado";
-        } catch (IllegalArgumentException e) {
-            model.addAttribute("erro", e.getMessage());
-            return "cadastro";
-        }
-
-    }
-
 }
